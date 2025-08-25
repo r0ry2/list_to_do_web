@@ -1,4 +1,4 @@
-# To-Do List Web App ✅
+# To-Do List Web App 
 
 # Project Idea  
 This project is a simple ((web application for managing tasks To-Do Lists))  
