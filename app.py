@@ -11,13 +11,11 @@ db.init_app(app)
 with app.app_context():
     db.create_all()
 
-# 🏠 الصفحة الرئيسية
 @app.route('/')
 def index():
     tasks = Task.query.all()
     return render_template('index.html', tasks=tasks)
 
-# ➕ إضافة مهمة
 @app.route('/add', methods=['POST'])
 def add():
     title = request.form.get('title')
@@ -27,7 +25,6 @@ def add():
         db.session.commit()
     return redirect(url_for('index'))
 
-# 🗑️ حذف مهمة
 @app.route('/delete/<int:task_id>')
 def delete(task_id):
     task = Task.query.get(task_id)
@@ -36,7 +33,6 @@ def delete(task_id):
         db.session.commit()
     return redirect(url_for('index'))
 
-# ✏️ تعديل مهمة
 @app.route('/edit/<int:task_id>', methods=['POST'])
 def edit(task_id):
     task = Task.query.get(task_id)
@@ -47,7 +43,6 @@ def edit(task_id):
             db.session.commit()
     return redirect(url_for('index'))
 
-# ✅ تغيير حالة المهمة (منجزة أو لا)
 @app.route('/toggle/<int:task_id>')
 def toggle(task_id):
     task = Task.query.get(task_id)

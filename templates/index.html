@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My To-Do List ✅</title>
+    <title>My To-Do List </title>
     <style>
         body { font-family: Arial, sans-serif; background: #f4f4f9; text-align: center; }
         h1 { color: #333; }
@@ -13,10 +13,9 @@
     </style>
 </head>
 <body>
-    <h1>My To-Do List ✅</h1>
+    <h1>My To-Do List </h1>
     <p>Welcome to your task manager!</p>
 
-    <!-- إضافة مهمة -->
     <form action="/add" method="POST">
         <input type="text" name="title" placeholder="Enter task..." required>
         <button type="submit">Add</button>
@@ -25,10 +24,8 @@
     <div>
         {% for task in tasks %}
         <div class="task">
-            <!-- المهمة -->
             <span class="{% if task.completed %}completed{% endif %}">{{ task.title }}</span>
 
-            <!-- أزرار التفاعل -->
             <div>
                 <a href="/toggle/{{ task.id }}"><button>✔</button></a>
                 <form action="/edit/{{ task.id }}" method="POST" style="display:inline;">
